@@ -1,3 +1,4 @@
+***TiMix: Text-aware Image Mixing for Effective Vision-Language Pre-training***
 
 
 ## Pre-trained models and datasets
