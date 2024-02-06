@@ -1,0 +1,51 @@
+alpha: 0.4
+batch_size: 128
+bert_config: configs/config_bert.json
+concat_last_layer: true
+clip_name: "ViT-B-16"
+distill: true
+embed_dim: 256
+eos: '[SEP]'
+image_res: 256
+gamma: 1.0
+ita_task: true
+itm_task: true
+merge_attention: false
+mid_cross: true
+mlm_probability: 0.15
+mlm_task: true
+momentum: 0.995
+optimizer: {lr1: 0.0001, lr2: 1e-05, opt: adamW, weight_decay: 0.02}
+prefix_task: true
+queue_size: 65536
+#queue_size: 64512
+read_local_data: false
+schedular: {cooldown_epochs: 0, decay_rate: 1, epochs: 30, lr: 0.0001, min_lr: 1e-06,
+  sched: cosine, warmup_epochs: 20, warmup_lr: 1e-06}
+temp: 0.07
+train_file: [data/mscoco_train.json, data/vgnococo.json, data/google_cc.json, data/sbu.json]
+vision_width: 768
+use_checkpoint: true
+
+train_file_regions: [
+    'data/data_json/vg_object.json',
+    'data/data_json/vg_region.json',
+    'data/data_json/coco_object.json'
+]
+
+regions: {image_key: "binary", is_image_rpath: False, caption_key: "caption", tokenized: False,
+          iter_perc: 1.0, batch_size: 64, max_images: 48, max_regions: 5, min_perc_in_image: 0.5, num_workers: 10}
+calc_image_bbox_loss: False
+text_encoder: 'google/bert-base-uncased' 
+
+max_words: 40  # i use 30 for 14M
+max_tokens: 40
+mask_prob: 0.15
+max_masks: 8
+mask_whole_word: True
+skipgram_prb: 0.2
+skipgram_size: 3
+patch_size: 16
+token_ratio: 0.5
+min_side_ratio: 0.35
+max_side_ratio: 0.75
